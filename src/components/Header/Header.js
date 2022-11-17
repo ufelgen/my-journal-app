@@ -1,4 +1,9 @@
+import "./Header.css";
+
 export default function Header() {
-  return;
-  <h1>JOURNAL</h1>;
+  return (
+    <header>
+      <h1 class="header">JOURNAL</h1>
+    </header>
+  );
 }

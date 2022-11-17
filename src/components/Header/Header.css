@@ -1,4 +1,9 @@
-Header {
-  background-color: var(--color-foam);
+header {
+  background-color: rgb(233, 232, 232);
   color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 10vh;
 }

@@ -1,0 +1,29 @@
+.entry {
+  display: grid;
+  grid-template-areas:
+    "date date"
+    "motto star"
+    "notes notes";
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.date {
+  padding: 1rem;
+  grid-area: date;
+}
+
+.motto {
+  padding: 1rem;
+  grid-area: motto;
+}
+
+.fav--star {
+  grid-area: star;
+}
+
+.notes {
+  padding: 1rem;
+  grid-area: notes;
+}
