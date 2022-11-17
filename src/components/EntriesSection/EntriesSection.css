@@ -26,4 +26,14 @@
 .notes {
   padding: 1rem;
   grid-area: notes;
+  border-bottom: 1px solid lightgrey;
+}
+
+.tabBar__button {
+  color: var(--color-nemo);
+  background-color: var(--color-foam);
+  padding: 0.5rem;
+  margin: 1rem;
+  width: 7rem;
+  border: none;
 }
