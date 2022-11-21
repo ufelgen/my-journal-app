@@ -12,9 +12,9 @@ export default function Form() {
       </section>
 
       <form className="form">
-        <label for="motto">Motto</label>
+        <label htmlFor="motto">Motto</label>
         <textarea id="motto" rows="1"></textarea>
-        <label for="notes">Notes</label>
+        <label htmlFor="notes">Notes</label>
         <textarea id="notes" rows="5"></textarea>
         <Button type="submit" className="form__submit" onClick={handleSubmit}>
           Create
