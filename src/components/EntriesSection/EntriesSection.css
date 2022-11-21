@@ -26,7 +26,7 @@
 .notes {
   padding: 1rem;
   grid-area: notes;
-  border-bottom: 1px solid lightgrey;
+  /*border-bottom: 1px solid lightgrey; */
 }
 
 .tabBar__button {
@@ -41,4 +41,12 @@
 .favourites__button {
   border: none;
   background-color: transparent;
+}
+
+.divider {
+  border: none;
+  width: 100%;
+  margin: 0;
+  height: 1px;
+  background: var(--color-water-10);
 }
