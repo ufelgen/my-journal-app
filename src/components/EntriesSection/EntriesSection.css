@@ -35,5 +35,10 @@
   padding: 0.5rem;
   margin: 1rem;
   width: 7rem;
+  yborder: none;
+}
+
+.favourites__button {
   border: none;
+  background-color: transparent;
 }
