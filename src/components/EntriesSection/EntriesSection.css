@@ -1,0 +1,39 @@
+.entry {
+  display: grid;
+  grid-template-areas:
+    "date date"
+    "motto star"
+    "notes notes";
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.date {
+  padding: 1rem;
+  grid-area: date;
+}
+
+.motto {
+  padding: 1rem;
+  grid-area: motto;
+}
+
+.fav--star {
+  grid-area: star;
+}
+
+.notes {
+  padding: 1rem;
+  grid-area: notes;
+  border-bottom: 1px solid lightgrey;
+}
+
+.tabBar__button {
+  color: var(--color-nemo);
+  background-color: var(--color-foam);
+  padding: 0.5rem;
+  margin: 1rem;
+  width: 7rem;
+  border: none;
+}
