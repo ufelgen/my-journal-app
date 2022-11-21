@@ -1,6 +1,8 @@
 @font-face {
-  font-family: "SourceSansPro";
-  src: url("./fonts/SourceSansPro-Regular.ttf");
+  font-family: "OpenSans";
+  src: local("OpenSans"),
+    url("./fonts/OpenSans/OpenSans-VariableFont.ttf") format("truetype");
+  font-weight: 300 800;
 }
 
 :root {
@@ -24,7 +26,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "SourseSansPro", Arial, Helvetica, sans-serif;
+  font-family: "OpenSans", Arial, Helvetica, sans-serif;
 }
 
 body {

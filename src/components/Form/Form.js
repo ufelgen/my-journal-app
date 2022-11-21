@@ -2,6 +2,7 @@ import Button from "./Button";
 import { handleSubmit } from "./Button";
 import "../Main/Main.css";
 import "./Button.css";
+import "./Form.css";
 
 export default function Form() {
   return (
