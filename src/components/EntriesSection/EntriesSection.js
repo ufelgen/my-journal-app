@@ -7,11 +7,15 @@ export default function EntriesSection() {
   return (
     <>
       <TabBar />
-      {entries.map((entry, index) => {
+      {defaultEntries.map((defaultEntry, index) => {
         return (
-          <Fragment key={entry.id}>
-            <Entry date={entry.date} motto={entry.motto} notes={entry.notes} />
-            {index === entries.length - 1 ? "" : <Divider />}
+          <Fragment key={defaultEntry.id}>
+            <Entry
+              date={defaultEntry.date}
+              motto={defaultEntry.motto}
+              notes={defaultEntry.notes}
+            />
+            {index === defaultEntries.length - 1 ? "" : <Divider />}
           </Fragment>
         );
       })}
@@ -19,7 +23,7 @@ export default function EntriesSection() {
   );
 }
 
-const entries = [
+const defaultEntries = [
   {
     id: 1000,
     date: "Feb 5, 2025",
