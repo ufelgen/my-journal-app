@@ -3,25 +3,28 @@ import TabBar from "./TabBar";
 import Button from "../Form/Button";
 import Divider from "./Divider";
 import { Fragment } from "react";
+
 export default function EntriesSection() {
   return (
     <>
       <TabBar />
-      {defaultEntries.map((defaultEntry, index) => {
+      {allEntries.map((allEntry, index) => {
         return (
-          <Fragment key={defaultEntry.id}>
+          <Fragment key={allEntry.id}>
             <Entry
-              date={defaultEntry.date}
-              motto={defaultEntry.motto}
-              notes={defaultEntry.notes}
+              date={allEntry.date}
+              motto={allEntry.motto}
+              notes={allEntry.notes}
             />
-            {index === defaultEntries.length - 1 ? "" : <Divider />}
+            {index === allEntries.length - 1 ? "" : <Divider />}
           </Fragment>
         );
       })}
     </>
   );
 }
+
+const entryFromLocalStorage = JSON.parse(localStorage.getItem("entry"));
 
 const defaultEntries = [
   {
@@ -52,3 +55,4 @@ const defaultEntries = [
     notes: "My React-ion when I learned about React: 😍",
   },
 ];
+const allEntries = [...defaultEntries, entryFromLocalStorage];

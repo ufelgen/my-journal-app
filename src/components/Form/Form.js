@@ -6,10 +6,10 @@ import "./Form.css";
 import useLocalStorageState from "use-local-storage-state";
 
 export default function Form() {
-  const [entries, setEntries] = useLocalStorageState("newEntry", {
-    defaultValue: [],
+  const [entry, setEntry] = useLocalStorageState("newEntry", {
+    defaultValue: {},
   });
-  console.log(entries);
+  console.log(entry);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -17,9 +17,10 @@ export default function Form() {
       motto: event.target.elements.motto.value,
       notes: event.target.elements.notes.value,
     };
-    setEntries([...entries, newEntry]);
+    setEntry(newEntry);
     event.target.reset();
     event.target.elements.motto.focus();
+    localStorage.setItem("entry", JSON.stringify("entry"));
   }
 
   return (
