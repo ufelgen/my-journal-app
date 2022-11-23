@@ -1,12 +1,16 @@
 import EntriesSection from "../EntriesSection/EntriesSection";
 import Form from "../Form/Form";
 import { useState } from "react";
+import { nanoid } from "nanoid";
+import useLocalStorageState from "use-local-storage-state";
 
 export default function Main() {
-  const [entries, setEntries] = useState(defaultEntries);
+  const [entries, setEntries] = useLocalStorageState("entries", {
+    defaultValue: defaultEntries,
+  });
 
-  function handleEntries(brokkoli) {
-    setEntries([...entries, brokkoli]);
+  function handleEntries(newEntry) {
+    setEntries([{ id: nanoid(), ...newEntry }, ...entries]);
   }
 
   return (

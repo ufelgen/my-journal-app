@@ -2,7 +2,6 @@ import Button from "./Button";
 import "../Main/Main.css";
 import "./Button.css";
 import "./Form.css";
-import useLocalStorageState from "use-local-storage-state";
 
 export default function Form({ onEntryInput, entry }) {
   function handleSubmit(event) {
@@ -11,7 +10,6 @@ export default function Form({ onEntryInput, entry }) {
       motto: event.target.elements.motto.value,
       notes: event.target.elements.notes.value,
       date: "today",
-      id: "u25895290850",
     };
 
     onEntryInput(newEntry);
