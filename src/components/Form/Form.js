@@ -3,7 +3,7 @@ import "../Main/Main.css";
 import "./Button.css";
 import "./Form.css";
 
-export default function Form({ onEntryInput, entry }) {
+export default function Form({ onAddEntries, entry }) {
   function handleSubmit(event) {
     event.preventDefault();
     const newEntry = {
@@ -12,7 +12,7 @@ export default function Form({ onEntryInput, entry }) {
       date: "today",
     };
 
-    onEntryInput(newEntry);
+    onAddEntries(newEntry);
 
     event.target.reset();
     event.target.elements.motto.focus();
