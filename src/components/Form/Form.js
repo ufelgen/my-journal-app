@@ -1,26 +1,23 @@
 import Button from "./Button";
-import { handleSubmit } from "./Button";
 import "../Main/Main.css";
 import "./Button.css";
 import "./Form.css";
 import useLocalStorageState from "use-local-storage-state";
 
-export default function Form() {
-  const [entry, setEntry] = useLocalStorageState("newEntry", {
-    defaultValue: {},
-  });
-  console.log(entry);
-
+export default function Form({ onEntryInput, entry }) {
   function handleSubmit(event) {
     event.preventDefault();
     const newEntry = {
       motto: event.target.elements.motto.value,
       notes: event.target.elements.notes.value,
+      date: "today",
+      id: "u25895290850",
     };
-    setEntry(newEntry);
+
+    onEntryInput(newEntry);
+
     event.target.reset();
     event.target.elements.motto.focus();
-    localStorage.setItem("entry", JSON.stringify("entry"));
   }
 
   return (
