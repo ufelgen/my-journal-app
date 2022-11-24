@@ -6,7 +6,7 @@ import { Fragment } from "react";
 export default function EntriesSection({
   entries,
   onToggleFavorite,
-  isFavorite,
+  isfavorite,
   id,
 }) {
   return (
@@ -20,7 +20,7 @@ export default function EntriesSection({
               motto={entry.motto}
               notes={entry.notes}
               onToggleFavorite={onToggleFavorite}
-              isFavorite={isFavorite}
+              isfavorite={isfavorite}
               id={id}
             />
             {index === entries.length - 1 ? "" : <Divider />}
