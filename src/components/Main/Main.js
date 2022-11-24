@@ -11,13 +11,13 @@ export default function Main() {
   });
 
   function handleAddEntries(newEntry) {
-    setEntries([{ id: nanoid(), isfavorite: false, ...newEntry }, ...entries]);
+    setEntries([{ id: nanoid(), isFavorite: false, ...newEntry }, ...entries]);
   }
 
   function handleToggleFavorite(id) {
     setEntries(
       entries.map((entry) =>
-        entry.id === id ? { ...entry, isfavorite: !entry.isfavorite } : entry
+        entry.id === id ? { ...entry, isFavorite: !entry.isFavorite } : entry
       )
     );
   }
@@ -36,7 +36,7 @@ export default function Main() {
 const defaultEntries = [
   {
     id: 1000,
-    isfavorite: false,
+    isFavorite: false,
     date: "Feb 5, 2025",
     motto: "We are in a state of chaos",
     notes:
@@ -44,7 +44,7 @@ const defaultEntries = [
   },
   {
     id: 999,
-    isfavorite: false,
+    isFavorite: false,
     date: "Feb 4, 2025",
     motto: "Props, Props, Props",
     notes:
@@ -52,7 +52,7 @@ const defaultEntries = [
   },
   {
     id: 998,
-    isfavorite: false,
+    isFavorite: false,
     date: "Feb 3, 2025",
     motto: "How to nest components online fast",
     notes:
@@ -60,7 +60,7 @@ const defaultEntries = [
   },
   {
     id: 997,
-    isfavorite: false,
+    isFavorite: false,
     date: "Feb 2, 2025",
     motto: "I'm a React Developer",
     notes: "My React-ion when I learned about React: 😍",

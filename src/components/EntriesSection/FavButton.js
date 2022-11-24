@@ -3,7 +3,6 @@ export default function FavButton({
   className,
   children,
   onToggleFavorite,
-  isfavorite,
   id,
 }) {
   return (
@@ -11,7 +10,6 @@ export default function FavButton({
       <button
         type={type}
         className={className}
-        isfavorite={isfavorite}
         onClick={() => onToggleFavorite(id)}
       >
         {children}

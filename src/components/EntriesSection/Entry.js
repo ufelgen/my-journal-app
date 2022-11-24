@@ -9,7 +9,7 @@ export default function Entry({
   motto,
   notes,
   onToggleFavorite,
-  isfavorite,
+  isFavorite,
   id,
 }) {
   return (
@@ -20,10 +20,10 @@ export default function Entry({
         <FavButton
           className="favourites__button"
           onToggleFavorite={onToggleFavorite}
-          isfavorite={isfavorite}
+          isFavorite={isFavorite}
           id={id}
         >
-          {isfavorite ? <StarFilled /> : <Star />}
+          {isFavorite ? <StarFilled /> : <Star />}
         </FavButton>
         <article className="notes">{notes}</article>
       </section>
