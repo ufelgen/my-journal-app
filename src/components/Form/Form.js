@@ -1,7 +1,6 @@
 import Button from "./Button";
-import "../Main/Main.css";
 import "./Button.css";
-import "./Form.css";
+import styled from "styled-components";
 
 export default function Form({ onAddEntries, entry }) {
   function handleSubmit(event) {
@@ -20,11 +19,11 @@ export default function Form({ onAddEntries, entry }) {
 
   return (
     <>
-      <section className="heading">
+      <StyledHeading>
         <h2>NEW ENTRY - TODAY, FEB 28, 2028</h2>
-      </section>
+      </StyledHeading>
 
-      <form className="form" onSubmit={handleSubmit}>
+      <StyledForm onSubmit={handleSubmit}>
         <label htmlFor="motto">Motto</label>
         <input id="motto" name="motto"></input>
         <label htmlFor="notes">Notes</label>
@@ -33,7 +32,29 @@ export default function Form({ onAddEntries, entry }) {
         <Button type="submit" className="form__submit">
           Create
         </Button>
-      </form>
+      </StyledForm>
     </>
   );
 }
+
+const StyledHeading = styled.section`
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  text-transform: uppercase;
+  /* figma above, mine below */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  font-size: 0.5rem;
+`;
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;

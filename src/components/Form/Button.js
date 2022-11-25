@@ -1,3 +1,5 @@
+import styled from "styled-components";
+
 export default function Button({ type, className, children, onClick }) {
   return (
     <>
@@ -8,6 +10,4 @@ export default function Button({ type, className, children, onClick }) {
   );
 }
 
-export function handleSubmit() {
-  // event.preventDefault();
-}
+const StyledTabBarButton = styled.button``;

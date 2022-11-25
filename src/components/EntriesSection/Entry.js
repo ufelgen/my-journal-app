@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./EntriesSection.css";
+import styled from "styled-components";
 import { ReactComponent as Star } from "../../assets/star.svg";
 import { ReactComponent as StarFilled } from "../../assets/star-filled.svg";
 import FavButton from "./FavButton";
@@ -14,19 +14,44 @@ export default function Entry({
 }) {
   return (
     <>
-      <section className="entry">
-        <h4 className="date">{date}</h4>
-        <h3 className="motto">{motto}</h3>
+      <StyledEntrySection>
+        <StyledDate>{date}</StyledDate>
+        <StyledMotto>{motto}</StyledMotto>
         <FavButton
-          className="favourites__button"
           onToggleFavorite={onToggleFavorite}
           isFavorite={isFavorite}
           id={id}
         >
           {isFavorite ? <StarFilled /> : <Star />}
         </FavButton>
-        <article className="notes">{notes}</article>
-      </section>
+        <StyledNotes>{notes}</StyledNotes>
+      </StyledEntrySection>
     </>
   );
 }
+
+const StyledEntrySection = styled.section`
+  display: grid;
+  grid-template-areas:
+    "date date"
+    "motto star"
+    "notes notes";
+  flex-direction: column;
+
+  align-items: center;
+`;
+
+const StyledDate = styled.h4`
+  padding: 1rem;
+  grid-area: date;
+`;
+
+const StyledMotto = styled.h3`
+  padding: 1rem;
+  grid-area: motto;
+`;
+
+const StyledNotes = styled.article`
+  padding: 1rem;
+  grid-area: notes;
+`;

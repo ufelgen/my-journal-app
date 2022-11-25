@@ -1,6 +1,5 @@
 import { useState } from "react";
-import Button from "../Form/Button";
-import "./EntriesSection.css";
+import TabBarButton from "./TabBarButton";
 
 export default function TabBar() {
   const [favourites, setFavourites] = useState(0);
@@ -10,16 +9,12 @@ export default function TabBar() {
 
   return (
     <>
-      <Button type="button" className="tabBar__button">
+      <TabBarButton type="button">
         <span>All Entries</span> <span>3</span>
-      </Button>
-      <Button
-        type="button"
-        className="tabBar__button"
-        onClick={() => handleFavouriteClick()}
-      >
+      </TabBarButton>
+      <TabBarButton type="button" onClick={() => handleFavouriteClick()}>
         <span>Favourites</span> <span>{favourites}</span>
-      </Button>
+      </TabBarButton>
     </>
   );
 }

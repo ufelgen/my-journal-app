@@ -1,19 +1,17 @@
-export default function FavButton({
-  type,
-  className,
-  children,
-  onToggleFavorite,
-  id,
-}) {
+import styled from "styled-components";
+
+export default function FavButton({ type, children, onToggleFavorite, id }) {
   return (
     <>
-      <button
-        type={type}
-        className={className}
-        onClick={() => onToggleFavorite(id)}
-      >
+      <StyledFavButton type={type} onClick={() => onToggleFavorite(id)}>
         {children}
-      </button>
+      </StyledFavButton>
     </>
   );
 }
+
+const StyledFavButton = styled.button`
+  border: none;
+  background-color: transparent;
+  grid-area: star;
+`;
