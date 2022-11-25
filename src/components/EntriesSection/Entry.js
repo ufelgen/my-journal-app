@@ -37,6 +37,7 @@ const StyledEntrySection = styled.section`
     "motto star"
     "notes notes";
   flex-direction: column;
+  position: relative;
 
   align-items: center;
 `;
