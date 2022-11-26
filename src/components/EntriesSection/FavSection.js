@@ -12,7 +12,7 @@ export default function FavEntriesSection({
     <>
       {favEntries.map((favEntry, index) => {
         return (
-          <Fragment key={favEntry.id}>
+          <Fragment key={favEntry.notes}>
             <Entry
               date={favEntry.date}
               motto={favEntry.motto}
