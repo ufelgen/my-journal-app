@@ -1,5 +1,4 @@
-import Button from "./Button";
-import "./Button.css";
+import FormSubmitButton from "./FormSubmitButton";
 import styled from "styled-components";
 
 export default function Form({ onAddEntries, entry }) {
@@ -29,9 +28,9 @@ export default function Form({ onAddEntries, entry }) {
         <label htmlFor="notes">Notes</label>
         <textarea id="notes" name="notes" rows="5"></textarea>
 
-        <Button type="submit" className="form__submit">
+        <FormSubmitButton type="submit" className="form__submit">
           Create
-        </Button>
+        </FormSubmitButton>
       </StyledForm>
     </>
   );

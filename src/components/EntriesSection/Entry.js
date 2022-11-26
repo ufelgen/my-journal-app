@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled from "styled-components";
 import { ReactComponent as Star } from "../../assets/star.svg";
 import { ReactComponent as StarFilled } from "../../assets/star-filled.svg";

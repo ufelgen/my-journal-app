@@ -1,10 +1,8 @@
 import EntriesSection from "../EntriesSection/EntriesSection";
 import Form from "../Form/Form";
-import { useState } from "react";
 import { nanoid } from "nanoid";
 import styled from "styled-components";
 import useLocalStorageState from "use-local-storage-state";
-import Entry from "../EntriesSection/Entry";
 
 export default function Main() {
   const [entries, setEntries] = useLocalStorageState("entries", {
