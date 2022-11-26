@@ -1,5 +1,7 @@
 import EntriesSection from "../EntriesSection/EntriesSection";
+import FavEntriesSection from "../EntriesSection/FavSection";
 import Form from "../Form/Form";
+import TabBar from "../EntriesSection/TabBar";
 import { nanoid } from "nanoid";
 import styled from "styled-components";
 import useLocalStorageState from "use-local-storage-state";
@@ -7,6 +9,9 @@ import useLocalStorageState from "use-local-storage-state";
 export default function Main() {
   const [entries, setEntries] = useLocalStorageState("entries", {
     defaultValue: defaultEntries,
+  });
+  const [favEntries, setFavEntries] = useLocalStorageState("favEntries", {
+    defaultValue: [{}],
   });
 
   function handleAddEntries(newEntry) {
@@ -19,13 +24,21 @@ export default function Main() {
         entry.id === id ? { ...entry, isFavorite: !entry.isFavorite } : entry
       )
     );
+    setFavEntries(
+      entries.map((entry) => entry.id === id && { entry, ...favEntries })
+    );
   }
 
   return (
     <StyledMain>
       <Form onAddEntries={handleAddEntries} />
+      <TabBar />
       <EntriesSection
         entries={entries}
+        onToggleFavorite={handleToggleFavorite}
+      />
+      <FavEntriesSection
+        favEntries={favEntries}
         onToggleFavorite={handleToggleFavorite}
       />
     </StyledMain>

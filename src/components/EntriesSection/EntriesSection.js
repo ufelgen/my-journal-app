@@ -1,5 +1,4 @@
 import Entry from "./Entry";
-import TabBar from "./TabBar";
 import Divider from "./Divider";
 import { Fragment } from "react";
 
@@ -11,7 +10,6 @@ export default function EntriesSection({
 }) {
   return (
     <>
-      <TabBar />
       {entries.map((entry, index) => {
         return (
           <Fragment key={entry.id}>

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default function TabBarButton({ type, className, children, onClick }) {
+export default function TabBarButton({ type, children, onClick }) {
   return (
     <>
       <StyledTabBarButton type={type} onClick={onClick}>
