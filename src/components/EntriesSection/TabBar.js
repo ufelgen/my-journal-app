@@ -1,19 +1,24 @@
-import { useState } from "react";
 import TabBarButton from "./TabBarButton";
 
 export default function TabBar() {
-  const [favourites, setFavourites] = useState(0);
-  function handleFavouriteClick() {
-    setFavourites(favourites + 1);
-  }
+  function switchToFavSection() {}
 
+  function switchToAllSection() {}
   return (
     <>
-      <TabBarButton type="button">
+      <TabBarButton
+        type="button"
+        name="allEntries"
+        onClick={() => switchToAllSection()}
+      >
         <span>All Entries</span> <span>3</span>
       </TabBarButton>
-      <TabBarButton type="button" onClick={() => handleFavouriteClick()}>
-        <span>Favourites</span> <span>{favourites}</span>
+      <TabBarButton
+        type="button"
+        name="favorites"
+        onClick={() => switchToFavSection()}
+      >
+        <span>Favourites</span> <span>0</span>
       </TabBarButton>
     </>
   );
