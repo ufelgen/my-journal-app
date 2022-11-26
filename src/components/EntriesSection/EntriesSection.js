@@ -2,12 +2,7 @@ import Entry from "./Entry";
 import Divider from "./Divider";
 import { Fragment } from "react";
 
-export default function EntriesSection({
-  entries,
-  onToggleFavorite,
-  isFavorite,
-  id,
-}) {
+export default function EntriesSection({ entries, onToggleFavorite }) {
   return (
     <>
       {entries.map((entry, index) => {

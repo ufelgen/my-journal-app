@@ -1,17 +1,17 @@
 import EntriesSection from "../EntriesSection/EntriesSection";
-import FavEntriesSection from "../EntriesSection/FavSection";
+//import FavEntriesSection from "../EntriesSection/FavSection";
 import Form from "../Form/Form";
 import TabBar from "../EntriesSection/TabBar";
 import { nanoid } from "nanoid";
 import styled from "styled-components";
 import useLocalStorageState from "use-local-storage-state";
 
-export default function Main({ favSection }) {
+export default function Main() {
   const [entries, setEntries] = useLocalStorageState("entries", {
     defaultValue: defaultEntries,
   });
   const [favEntries, setFavEntries] = useLocalStorageState("favEntries", {
-    defaultValue: [{}],
+    defaultValue: [],
   });
 
   function handleAddEntries(newEntry) {
@@ -24,18 +24,20 @@ export default function Main({ favSection }) {
         entry.id === id ? { ...entry, isFavorite: !entry.isFavorite } : entry
       )
     );
-    setFavEntries(
-      entries.map((entry) => entry.id === id && { entry, ...favEntries })
-    );
+    setFavEntries(entries.filter((entry) => entry.isFavorite === true));
   }
 
-  function switchToFavSection(favSection) {
-    favSection = true;
+  function switchToFavSection() {
+    setEntries(entries.filter((entry) => entry.isFavorite === true));
     console.log("fav entries: ", favEntries);
   }
 
-  function switchToAllSection(favSection) {
-    favSection = false;
+  function switchToAllSection() {
+    setEntries(
+      entries.filter(
+        (entry) => entry.isFavorite === true || entry.isFavorite === false
+      )
+    );
     console.log("all entries: ", entries);
   }
 
@@ -45,18 +47,19 @@ export default function Main({ favSection }) {
       <TabBar
         onAllSectionClick={switchToAllSection}
         onFavSectionClick={switchToFavSection}
+        entries={entries}
+        favEntries={favEntries}
       />
-      {favSection === true ? (
-        <FavEntriesSection
+
+      {/* <FavEntriesSection
           favEntries={favEntries}
           onToggleFavorite={handleToggleFavorite}
-        />
-      ) : (
-        <EntriesSection
-          entries={entries}
-          onToggleFavorite={handleToggleFavorite}
-        />
-      )}
+        /> */}
+
+      <EntriesSection
+        entries={entries}
+        onToggleFavorite={handleToggleFavorite}
+      />
     </StyledMain>
   );
 }
