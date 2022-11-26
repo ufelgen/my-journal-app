@@ -15,43 +15,41 @@ export default function Entry({
     <>
       <StyledEntrySection>
         <StyledDate>{date}</StyledDate>
-        <StyledMotto>{motto}</StyledMotto>
-        <FavButton
-          onToggleFavorite={onToggleFavorite}
-          isFavorite={isFavorite}
-          id={id}
-        >
-          {isFavorite ? <StarFilled /> : <Star />}
-        </FavButton>
+        <StyledEntryMottoContainer>
+          <StyledMotto>{motto}</StyledMotto>
+          <FavButton
+            onToggleFavorite={onToggleFavorite}
+            isFavorite={isFavorite}
+            id={id}
+          >
+            {isFavorite ? <StarFilled /> : <Star />}
+          </FavButton>
+        </StyledEntryMottoContainer>
         <StyledNotes>{notes}</StyledNotes>
       </StyledEntrySection>
     </>
   );
 }
 
-const StyledEntrySection = styled.section`
-  display: grid;
-  grid-template-areas:
-    "date date"
-    "motto star"
-    "notes notes";
-  flex-direction: column;
-  position: relative;
+const StyledEntryMottoContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
 
+const StyledEntrySection = styled.section`
+  flex-direction: column;
   align-items: center;
 `;
 
 const StyledDate = styled.h4`
   padding: 1rem;
-  grid-area: date;
 `;
 
 const StyledMotto = styled.h3`
   padding: 1rem;
-  grid-area: motto;
 `;
 
 const StyledNotes = styled.article`
   padding: 1rem;
-  grid-area: notes;
 `;

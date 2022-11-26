@@ -11,10 +11,20 @@ export default function FavButton({ type, children, onToggleFavorite, id }) {
 }
 
 const StyledFavButton = styled.button`
+  appearance: none;
+  background: none;
   border: none;
+  padding: 0;
+  border-radius: 999px;
+  aspect-ratio: 1;
+  transition: background-color 0.2s ease-in-out;
   background-color: transparent;
-  grid-area: star;
-  //margin-right: 10px;
-  //position: absolute;
-  //margin-top: -15px;
+  margin: -6px;
+  padding: 6px;
+  &:hover {
+    background-color: var(--color-water);
+  }
+  &:active {
+    background-color: var(--color-water-10);
+  }
 `;
