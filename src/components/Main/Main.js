@@ -18,10 +18,19 @@ export default function Main() {
 
   function handleAddEntries(newEntry) {
     setEntries([{ id: nanoid(), isFavorite: false, ...newEntry }, ...entries]);
+    setDisplayedEntries([
+      { id: nanoid(), isFavorite: false, ...newEntry },
+      ...entries,
+    ]);
   }
 
   function handleToggleFavorite(id) {
     setEntries(
+      entries.map((entry) =>
+        entry.id === id ? { ...entry, isFavorite: !entry.isFavorite } : entry
+      )
+    );
+    setDisplayedEntries(
       entries.map((entry) =>
         entry.id === id ? { ...entry, isFavorite: !entry.isFavorite } : entry
       )
