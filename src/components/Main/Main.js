@@ -14,6 +14,11 @@ export default function Main() {
     defaultValue: [],
   });
 
+  const [displayedEntries, setDisplayedEntries] = useLocalStorageState(
+    "displayedEntries",
+    { defaultValue: defaultEntries }
+  );
+
   function handleAddEntries(newEntry) {
     setEntries([{ id: nanoid(), isFavorite: false, ...newEntry }, ...entries]);
   }
@@ -24,20 +29,19 @@ export default function Main() {
         entry.id === id ? { ...entry, isFavorite: !entry.isFavorite } : entry
       )
     );
+
     setFavEntries(entries.filter((entry) => entry.isFavorite === true));
   }
 
+  const favoriteEntries = entries.filter((entry) => entry.isFavorite === true);
+
   function switchToFavSection() {
-    setEntries(entries.filter((entry) => entry.isFavorite === true));
-    console.log("fav entries: ", favEntries);
+    setDisplayedEntries(favoriteEntries);
+    console.log("fav entries: ", favoriteEntries);
   }
 
   function switchToAllSection() {
-    setEntries(
-      entries.filter(
-        (entry) => entry.isFavorite === true || entry.isFavorite === false
-      )
-    );
+    setDisplayedEntries(entries);
     console.log("all entries: ", entries);
   }
 
@@ -47,8 +51,8 @@ export default function Main() {
       <TabBar
         onAllSectionClick={switchToAllSection}
         onFavSectionClick={switchToFavSection}
-        entries={entries}
-        favEntries={favEntries}
+        entries={displayedEntries}
+        favoriteEntries={favoriteEntries}
       />
 
       {/* <FavEntriesSection
@@ -57,7 +61,7 @@ export default function Main() {
         /> */}
 
       <EntriesSection
-        entries={entries}
+        entries={displayedEntries}
         onToggleFavorite={handleToggleFavorite}
       />
     </StyledMain>
