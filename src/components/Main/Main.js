@@ -10,9 +10,6 @@ export default function Main() {
   const [entries, setEntries] = useLocalStorageState("entries", {
     defaultValue: defaultEntries,
   });
-  const [favEntries, setFavEntries] = useLocalStorageState("favEntries", {
-    defaultValue: [],
-  });
 
   const [displayedEntries, setDisplayedEntries] = useLocalStorageState(
     "displayedEntries",
@@ -29,8 +26,6 @@ export default function Main() {
         entry.id === id ? { ...entry, isFavorite: !entry.isFavorite } : entry
       )
     );
-
-    setFavEntries(entries.filter((entry) => entry.isFavorite === true));
   }
 
   const favoriteEntries = entries.filter((entry) => entry.isFavorite === true);
@@ -51,15 +46,9 @@ export default function Main() {
       <TabBar
         onAllSectionClick={switchToAllSection}
         onFavSectionClick={switchToFavSection}
-        entries={displayedEntries}
+        entries={entries}
         favoriteEntries={favoriteEntries}
       />
-
-      {/* <FavEntriesSection
-          favEntries={favEntries}
-          onToggleFavorite={handleToggleFavorite}
-        /> */}
-
       <EntriesSection
         entries={displayedEntries}
         onToggleFavorite={handleToggleFavorite}

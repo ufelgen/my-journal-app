@@ -14,7 +14,7 @@ const StyledTabBarButton = styled.button`
   color: var(--color-nemo);
   background-color: var(--color-foam);
   padding: 0.5rem;
-  margin: 1rem;
+  margin: 1rem 3rem;
   width: 7rem;
   border: none;
 `;
