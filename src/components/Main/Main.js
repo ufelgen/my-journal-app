@@ -5,32 +5,21 @@ import TabBar from "../EntriesSection/TabBar";
 import { nanoid } from "nanoid";
 import styled from "styled-components";
 import useLocalStorageState from "use-local-storage-state";
+import { useState } from "react";
 
 export default function Main() {
   const [entries, setEntries] = useLocalStorageState("entries", {
     defaultValue: defaultEntries,
   });
 
-  const [displayedEntries, setDisplayedEntries] = useLocalStorageState(
-    "displayedEntries",
-    { defaultValue: defaultEntries }
-  );
+  const [displayed, setDisplayed] = useState("all");
 
   function handleAddEntries(newEntry) {
     setEntries([{ id: nanoid(), isFavorite: false, ...newEntry }, ...entries]);
-    setDisplayedEntries([
-      { id: nanoid(), isFavorite: false, ...newEntry },
-      ...entries,
-    ]);
   }
 
   function handleToggleFavorite(id) {
     setEntries(
-      entries.map((entry) =>
-        entry.id === id ? { ...entry, isFavorite: !entry.isFavorite } : entry
-      )
-    );
-    setDisplayedEntries(
       entries.map((entry) =>
         entry.id === id ? { ...entry, isFavorite: !entry.isFavorite } : entry
       )
@@ -40,12 +29,12 @@ export default function Main() {
   const favoriteEntries = entries.filter((entry) => entry.isFavorite === true);
 
   function switchToFavSection() {
-    setDisplayedEntries(favoriteEntries);
+    setDisplayed("fav");
     console.log("fav entries: ", favoriteEntries);
   }
 
   function switchToAllSection() {
-    setDisplayedEntries(entries);
+    setDisplayed("all");
     console.log("all entries: ", entries);
   }
 
@@ -59,7 +48,7 @@ export default function Main() {
         favoriteEntries={favoriteEntries}
       />
       <EntriesSection
-        entries={displayedEntries}
+        entries={displayed === "all" ? entries : favoriteEntries}
         onToggleFavorite={handleToggleFavorite}
       />
     </StyledMain>
