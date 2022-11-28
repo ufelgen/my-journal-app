@@ -1,25 +1,40 @@
-import { useState } from "react";
-import Button from "../Form/Button";
-import "./EntriesSection.css";
+import styled from "styled-components";
+import TabBarButton from "./TabBarButton";
 
-export default function TabBar() {
-  const [favourites, setFavourites] = useState(0);
-  function handleFavouriteClick() {
-    setFavourites(favourites + 1);
-  }
-
+export default function TabBar({
+  onAllSectionClick,
+  onFavSectionClick,
+  entries,
+  favoriteEntries,
+}) {
   return (
     <>
-      <Button type="button" className="tabBar__button">
-        <span>All Entries</span> <span>3</span>
-      </Button>
-      <Button
+      <TabBarButton
         type="button"
-        className="tabBar__button"
-        onClick={() => handleFavouriteClick()}
+        name="allEntries"
+        onClick={() => onAllSectionClick()}
       >
-        <span>Favourites</span> <span>{favourites}</span>
-      </Button>
+        <span>All Entries</span>{" "}
+        <StyledTabBarSpan>{entries.length}</StyledTabBarSpan>
+      </TabBarButton>
+      <TabBarButton
+        type="button"
+        name="favorites"
+        onClick={() => onFavSectionClick()}
+      >
+        <span>Favourites</span>{" "}
+        <StyledTabBarSpan>{favoriteEntries.length}</StyledTabBarSpan>
+      </TabBarButton>
     </>
   );
 }
+
+const StyledTabBarSpan = styled.span`
+  display: inline-block;
+  font-size: 12px;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background-color: var(--color-nemo);
+  color: var(--color-foam);
+  font-weight: 400;
+`;

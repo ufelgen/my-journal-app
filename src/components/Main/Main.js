@@ -1,17 +1,27 @@
 import EntriesSection from "../EntriesSection/EntriesSection";
+//import FavEntriesSection from "../EntriesSection/FavSection";
 import Form from "../Form/Form";
-import { useState } from "react";
+import TabBar from "../EntriesSection/TabBar";
 import { nanoid } from "nanoid";
+import styled from "styled-components";
 import useLocalStorageState from "use-local-storage-state";
-import Entry from "../EntriesSection/Entry";
 
 export default function Main() {
   const [entries, setEntries] = useLocalStorageState("entries", {
     defaultValue: defaultEntries,
   });
 
+  const [displayedEntries, setDisplayedEntries] = useLocalStorageState(
+    "displayedEntries",
+    { defaultValue: defaultEntries }
+  );
+
   function handleAddEntries(newEntry) {
     setEntries([{ id: nanoid(), isFavorite: false, ...newEntry }, ...entries]);
+    setDisplayedEntries([
+      { id: nanoid(), isFavorite: false, ...newEntry },
+      ...entries,
+    ]);
   }
 
   function handleToggleFavorite(id) {
@@ -20,18 +30,45 @@ export default function Main() {
         entry.id === id ? { ...entry, isFavorite: !entry.isFavorite } : entry
       )
     );
+    setDisplayedEntries(
+      entries.map((entry) =>
+        entry.id === id ? { ...entry, isFavorite: !entry.isFavorite } : entry
+      )
+    );
+  }
+
+  const favoriteEntries = entries.filter((entry) => entry.isFavorite === true);
+
+  function switchToFavSection() {
+    setDisplayedEntries(favoriteEntries);
+    console.log("fav entries: ", favoriteEntries);
+  }
+
+  function switchToAllSection() {
+    setDisplayedEntries(entries);
+    console.log("all entries: ", entries);
   }
 
   return (
-    <main>
+    <StyledMain>
       <Form onAddEntries={handleAddEntries} />
-      <EntriesSection
+      <TabBar
+        onAllSectionClick={switchToAllSection}
+        onFavSectionClick={switchToFavSection}
         entries={entries}
+        favoriteEntries={favoriteEntries}
+      />
+      <EntriesSection
+        entries={displayedEntries}
         onToggleFavorite={handleToggleFavorite}
       />
-    </main>
+    </StyledMain>
   );
 }
+
+const StyledMain = styled.main`
+  margin-bottom: 10vh;
+`;
 
 const defaultEntries = [
   {
